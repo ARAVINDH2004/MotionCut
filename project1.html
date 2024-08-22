@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <title>Document</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color:rgb(150, 175, 245);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+        
+        .search-container {
+            display: flex;
+            align-items: center;
+            /*padding: 10px 20px;*/
+        }
+        
+        .dropdown {
+            position: relative;
+        }
+        
+        .dropbtn {
+            background-color:rgb(150, 20, 95);
+            color: white;
+            padding: 10px 16px;
+            font-size: 16px;
+            border: none;
+            border-radius: 25px;
+            cursor: pointer;
+            outline: none;
+            margin-right: 10px;
+        }
+        
+        .dropdown-content {
+            display: none;
+            position: absolute;
+            background-color: #f9f9f9;
+            min-width: 200px;
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+            border-radius: 10px;
+            z-index: 1;
+        }
+        
+        .dropdown-content a {
+            color: black;
+            padding: 12px 16px;
+            text-decoration: none;
+            display: block;
+            border-radius: 10px;
+        }
+        
+        .dropdown-content a:hover {
+            background-color: #ddd;
+        }
+        
+        .show {
+            display: block;
+        }
+        
+        .search-input {
+            padding: 10px;
+            border-radius: 25px;
+            border: 1px solid #ccc;
+            width: 250px;
+            margin-right: 10px;
+            outline: none;
+            font-size: 16px;
+        }
+        .search-input::placeholder{
+            color: rgb(150, 20, 95);
+        }
+        .fa fa-search{
+            color:rgb(150, 20, 95) ;
+        }
+    </style>
+</head>
+<body>
+    <div class="search-container">
+        <div class="dropdown">
+            <button class="dropbtn" id="dropdownButton">Categories /\</button>
+            <div class="dropdown-content" id="dropdownMenu">
+                <a href="#" onclick="selectCategory('Everything')">Everything</a>
+                <a href="#" onclick="selectCategory('Software Development')">Software Development</a>
+                <a href="#" onclick="selectCategory('Web Development')">Web Development</a>
+                <a href="#" onclick="selectCategory('Data Analyst')">Data Analyst</a>
+                <a href="#" onclick="selectCategory('IT Consultant')">IT Consultant</a>
+                <a href="#" onclick="selectCategory('Network Administrator')">Network Administrator</a>
+            </div>
+        </div>
+        <input type="text" class="search-input" placeholder="Search Anyhting">
+        <i class="fa fa-search" style="font-size:24px;color:rgb(150, 20, 95)"></i>
+    </div>
+
+    <script>
+        function selectCategory(category) {
+            document.getElementById('dropdownButton').textContent = category;
+            document.getElementById('dropdownMenu').classList.remove('show');
+        }
+
+        document.getElementById('dropdownButton').onclick = function() {
+            document.getElementById('dropdownMenu').classList.toggle('show');
+        }
+
+        window.onclick = function(event) {
+            if (!event.target.matches('#dropdownButton')) {
+                var dropdowns = document.getElementsByClassName("dropdown-content");
+                for (var i = 0; i < dropdowns.length; i++) {
+                    var openDropdown = dropdowns[i];
+                    if (openDropdown.classList.contains('show')) {
+                        openDropdown.classList.remove('show');
+                    }
+                }
+            }
+        }
+    </script>
+</body>
+</html>
